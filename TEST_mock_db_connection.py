@@ -3,6 +3,7 @@ from unittest.mock import MagicMock
 from run_query import *
 
 
+# Class to mock DB connection
 class TestDb(unittest.TestCase):
 
     @classmethod
@@ -13,6 +14,7 @@ class TestDb(unittest.TestCase):
     def tearDownClass(cls):
         print("Tearing down the TestDb class")
 
+    # to test on mocking the db connection
     def test_read(self):
         expected = [(3, 'John')]
 

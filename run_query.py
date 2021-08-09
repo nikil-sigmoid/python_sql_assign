@@ -3,11 +3,13 @@ import pandas as pd
 import psycopg2
 import logging
 
+# using logger
 LOG_FORMAT = "%(levelname)s %(asctime)s - %(message)s"
-logging.basicConfig(filename='/Users/nik/PycharmProjects/python_sql_assignment/log/assign.log', level=logging.DEBUG, format=LOG_FORMAT)
+logging.basicConfig(filename='/Users/nik/PycharmProjects/python_sql_assignment/log/logs.log', level=logging.DEBUG, format=LOG_FORMAT)
 logger = logging.getLogger()
 
 
+# to run the query
 def read_query(query, conn, message):
     data = None
     try:
@@ -18,6 +20,7 @@ def read_query(query, conn, message):
 
     except (Exception, psycopg2.DatabaseError) as error:
         print(error)
+
     finally:
         logger.info(message)
         return data
@@ -25,12 +28,11 @@ def read_query(query, conn, message):
 
 if __name__ == '__main__':
 
+    # Creating connection to the PostgreSQL Database
     conn = psycopg2.connect(host="localhost",
                             database="python_sql_assignment",
                             user="postgres",
                             password="User@123")
-
-
 
     # Q1
     message = "Saving employees and their managers in emp_and_managers.xlsx file"
@@ -99,58 +101,5 @@ if __name__ == '__main__':
             "INNER JOIN dept d " \
             "ON t.dname = d.dname) TO '/Users/nik/PycharmProjects/python_sql_assignment/data/deptwise_total_compensation.xlsx' DELIMITER ',' CSV HEADER; "
 
+    # Closing the connection
     conn.close()
-
-
-
-
-
-
-
-
-
-
-
-
-
-    #
-    #
-    # read_query(query, conn, "")
-    #
-    # query = "select * from sample"
-    #
-    # res = read_query(query, conn, "")
-    # print("goint to print")
-    # print(res)
-    # print("printed")
-
-
-
-    # columns = [desc[0] for desc in cur.description]
-    #
-    # df = pd.DataFrame(list(data), columns=columns)
-    # #
-    # writer = pd.ExcelWriter(file_name)
-    # df.to_excel(writer, sheet_name='bar')
-    # writer.save()
-
-
-
-
-    # query = "drop table if exists tbl_total_compensation; " \
-    #         "create table tbl_total_compensation( " \
-    #         "empno NUMeric(4) NOT NULL CONSTRAINT empno_pk PRIMARY KEY, " \
-    #         "ename varchar(10), " \
-    #         "dname VARCHAR(14) CONSTRAINT dept_dname_uq1 UNIQUE," \
-    #         "total_months float," \
-    #         "total_compensation float);"
-    #
-    # obj.run_query(query, None)
-
-    # query = "copy tbl_total_compensation from '/Users/nik/Desktop/abc3.xlsx' with csv header;"
-
-    # obj.run_query(query, None)
-
-    # finally:
-    #     if conn is not None:
-    #         conn.close()
