@@ -35,7 +35,7 @@ if __name__ == '__main__':
                             password="User@123")
 
     # Q1
-    message = "Saving employees and their managers in emp_and_managers.xlsx file"
+    message = "Q1- Saving employees and their managers in emp_and_managers.xlsx file"
     query = "COPY (SELECT e.ename, e.empno, m.ename " \
             "FROM emp e " \
             "LEFT OUTER JOIN emp m ON " \
@@ -43,7 +43,7 @@ if __name__ == '__main__':
     read_query(query, conn, message)
 
     # Q2(a)
-    message = "Q1(a)- Creating view for compensation calculated"
+    message = "Q2(a)- Creating view for compensation calculated"
     query = "CREATE OR REPLACE VIEW v_compensation AS " \
             "SELECT empno, job, deptno, " \
             "CASE " \
@@ -61,7 +61,7 @@ if __name__ == '__main__':
     read_query(query, conn, message)
 
     # Q2(b)
-    message = "Q1(b)- Calculating total compensation for each employee"
+    message = "Q2(b)- Calculating total compensation for each employee"
     query = "COPY (SELECT e.empno, e.ename, d.dname, comp.total_months, comp.total_compensation " \
             "FROM emp e INNER JOIN dept d " \
             "ON e.deptno = d.deptno " \
@@ -100,6 +100,8 @@ if __name__ == '__main__':
             "GROUP BY dname) t " \
             "INNER JOIN dept d " \
             "ON t.dname = d.dname) TO '/Users/nik/PycharmProjects/python_sql_assignment/data/deptwise_total_compensation.xlsx' DELIMITER ',' CSV HEADER; "
+
+    read_query(query, conn, message)
 
     # Closing the connection
     conn.close()

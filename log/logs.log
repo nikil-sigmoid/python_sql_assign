@@ -1,6 +1,7 @@
-INFO 2021-08-09 13:34:46,534 - Saving employees and their managers in emp_and_managers.xlsx file
-INFO 2021-08-09 13:34:46,560 - Q1(a)- Creating view for compensation calculated
-INFO 2021-08-09 13:34:46,566 - Q1(b)- Calculating total compensation for each employee
-INFO 2021-08-09 13:34:46,568 - Q3(a)- Creating table to import empwise_total_compensation.xlsx file
-INFO 2021-08-09 13:34:46,569 - Q3(b)- Importing file empwise_total_compensation.xlsx to the table
-INFO 2021-08-09 13:34:54,223 - testing
+INFO 2021-08-09 15:42:55,463 - Q1- Saving employees and their managers in emp_and_managers.xlsx file
+INFO 2021-08-09 15:42:55,474 - Q2(a)- Creating view for compensation calculated
+INFO 2021-08-09 15:42:55,479 - Q2(b)- Calculating total compensation for each employee
+INFO 2021-08-09 15:42:55,480 - Q3(a)- Creating table to import empwise_total_compensation.xlsx file
+INFO 2021-08-09 15:42:55,481 - Q3(b)- Importing file empwise_total_compensation.xlsx to the table
+INFO 2021-08-09 15:42:55,484 - Q4- Calculating deptwise total compensation
+INFO 2021-08-09 15:43:00,563 - testing
